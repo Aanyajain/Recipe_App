@@ -1,16 +1,24 @@
 import React from 'react';
-import {TouchableOpacity,View,Text,StyleSheet} from 'react-native';
+import {TouchableOpacity,View,Text,StyleSheet,Platform,TouchableNativeFeedback, TouchableNativeFeedbackBase} from 'react-native';
 
 const CategoryGridTile=props=>{
+    let Comp=TouchableOpacity;
+
+    if(Platform.OS==="android" && Platform.version>=21)
+    {
+        Comp=TouchableNativeFeedback;
+    }
+
     return(
-        <TouchableOpacity style={styles.grid} onPress={props.onSelect}>
-        <View syle={{...styles.cont,...{backgroundColor:props.color}}}>
-            <Text>
-                {props.title}
-                
+        <View style={styles.grid}>
+        <Comp style={{flex:1}} onPress={props.onSelect}>
+        <View style={{...styles.cont,...{backgroundColor:props.color}}}>
+            <Text style={styles.title} numberOfLines={2}>
+                {props.title}                
             </Text>
         </View>
-        </TouchableOpacity>
+        </Comp>
+        </View>
     );
 };
 
@@ -18,10 +26,26 @@ const styles=StyleSheet.create({
     grid:{
         flex:1,   
         margin:10,
-        height:160
+        height:160,
+        borderRadius:10,
+        overflow:'hidden'
     },
     cont:{
         flex:1,
+        borderRadius:10,
+        shadowColor:'black',
+        shadowOffset:{width:0,height:2},
+        shadowOpacity:0.5,
+        shadowRadius:10,
+        elevation:4,
+        justifyContent:'center',
+        alignItems:'center'
+
+    },
+    title:{
+        fontSize:24,
+        color:'white',
+        fontFamily:'open-sans-bold'
     }
 });
 
