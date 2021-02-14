@@ -28,7 +28,9 @@ const styles=StyleSheet.create({
         margin:10,
         height:160,
         borderRadius:10,
-        overflow:'hidden'
+        elevation:4,//for android
+        //for IOS,no need for eleevation 
+        overflow:Platform.OS==="android" && Platform.Version>=21 ?'hidden':"visible"
     },
     cont:{
         flex:1,
@@ -37,7 +39,6 @@ const styles=StyleSheet.create({
         shadowOffset:{width:0,height:2},
         shadowOpacity:0.5,
         shadowRadius:10,
-        elevation:4,
         justifyContent:'center',
         alignItems:'center'
 
