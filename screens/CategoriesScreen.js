@@ -3,24 +3,25 @@ import {View,Text,Button,Platform,TouchableOpacity,StyleSheet} from 'react-nativ
 import { FlatList } from 'react-native-gesture-handler';
 import {CATEGORIES} from '../data/dummy-data';
 import Colors from '../constants/Colors';
+import CategoryGridTile from '../components/CategoryGridTile';
 
 const CategoriesScreen=props=>{
 
     const renderGridItem=itemData=>{
         return(
-            <TouchableOpacity style={styles.grid} onPress={()=>{
-                props.navigation.navigate({routeName:'meals',params:{
-                    categoryId:itemData.item.id
-                }})
-            }}>
-            <View>
-                <Text>
-                    {itemData.item.title}
-                </Text>
-            </View>
-            </TouchableOpacity>
+            <CategoryGridTile 
+            title={itemData.item.title} 
+            color={itemData.item.color}
+            onSelect={()=>{
+                    props.navigation.navigate({routeName:'meals',
+                    params:{
+                        categoryId:itemData.item.id
+                    }
+                });
+            }} />
         )
-    }
+        };
+
     return(
      
        <FlatList 
@@ -36,12 +37,7 @@ CategoriesScreen.navigationOptions={
 };
 
 const styles=StyleSheet.create({
-grid:{
-    flex:1,
-    
-    margin:10,
-    height:160
-}
+
 })
 
 export default CategoriesScreen;
