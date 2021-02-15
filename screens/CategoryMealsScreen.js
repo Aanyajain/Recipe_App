@@ -3,23 +3,9 @@ import {View,Text,Button,StyleSheet,Platform} from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import {CATEGORIES,MEALS} from '../data/dummy-data';
 import MealItem from '../components/MealItem';
+import MealList from '../components/MealList';
 
 const CategoryMealsScreen=props=>{
-
-  const renderMealItem=itemData=>{
-    return(
-     <MealItem title={itemData.item.title} 
-     duration={itemData.item.duration}
-     complexity={itemData.item.complexity}
-     affordability={itemData.item.affordability}
-     image={itemData.item.imageUrl}
-     onSelectMeal={()=>{
-       props.navigation.navigate({routeName:'details',params:{
-         mealId:itemData.item.id
-       }})
-     }} />
-    )
-  }
 
    const catId=props.navigation.getParam('categoryId');
   //  const selectedCategory=CATEGORIES.find(cat=>cat.id===catId);
@@ -28,19 +14,8 @@ const CategoryMealsScreen=props=>{
    );
 
     return(
-      <View style={styles.screen}>
-          {/* <Text>
-              {selectedCategory.title}
-          </Text> */}
-          <FlatList style={{width:'100%'}} data={displayedMeals} renderItem={renderMealItem} />
-          {/* <Button title="Details"  onPress={()=>{
-            //   props.navigation.push('meals')//it helps to take to sam escreen
-            // used when on sam escreen diff content is loaded
-            
-            props.navigation.navigate({routeName:'details'})
-          }} /> */}
-      </View>
-    );
+      <MealList listData={displayedMeals} navigation={props.navigation} />
+      );
 }
 
 CategoryMealsScreen.navigationOptions=navigationData=>{
@@ -51,13 +26,5 @@ CategoryMealsScreen.navigationOptions=navigationData=>{
     headerTitle:selectedCategory.title,
   };
 };
-
-const styles=StyleSheet.create({
-screen:{
-    flex:1,
-    justifyContent:'center',
-    alignItems: 'center'
-}
-})
 
 export default CategoryMealsScreen;
