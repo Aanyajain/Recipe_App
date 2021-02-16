@@ -1,14 +1,18 @@
-import React from 'react';
-import {View,Text,StyleSheet} from 'react-native';
+import React,{useState} from 'react';
+import {View,Text,Switch,StyleSheet} from 'react-native';
 import {HeaderButtons,Item} from 'react-navigation-header-buttons';
 import {HeaderButton} from '../components/HeaderButton';
 
 const FiltersScreen=props=>{
     return(
       <View style={styles.screen}>
-          <Text>
-              The filters screen!
+          <Text style={styles.title}>
+             Available Filters / Restrictions
           </Text>
+          <View style={styles.filterCont}>
+              <Text>Gluten-Free</Text>
+          </View>
+          <Switch />
       </View>
     );
 }
@@ -30,8 +34,20 @@ FiltersScreen.navigationOptions=navData=>{
 const styles=StyleSheet.create({
 screen:{
     flex:1,
-    justifyContent:'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    margin:20
+},
+title:{
+    fontFamily:'open-sans-bold',
+    fontSize:20,
+    margin:10,
+    textAlign:'center'
+},
+filterCont:{
+    margin:20,
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center'
 }
 })
 

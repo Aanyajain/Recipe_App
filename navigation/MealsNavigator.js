@@ -48,7 +48,7 @@ const tabScreenConfig={
         },
         tabBarColor:Colors.secondaryColor
     }
-},}
+}}
 
 const FavTabNavigator=Platform.OS==="android"?
 createMaterialBottomTabNavigator(tabScreenConfig,{
@@ -63,12 +63,15 @@ createMaterialBottomTabNavigator(tabScreenConfig,{
 
 const FiltersNavigator=createStackNavigator({
     Filters:FiltersScreen
-});
-
+},{
+    navigationOptions:{
+        drawerLabel:"Filters"
+    },
+    defaultNavigationOptions:defaultStackNavOptions});
 
 const MainNavigator=createDrawerNavigator({
     MealsFav:FavTabNavigator,
     Filters:FiltersNavigator
-})
+});
 
 export default createAppContainer(FavTabNavigator);

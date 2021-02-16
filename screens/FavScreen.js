@@ -5,7 +5,6 @@ import {MEALS} from '../data/dummy-data';
 import {HeaderButtons,Item} from 'react-navigation-header-buttons';
 import {HeaderButton} from '../components/HeaderButton';
 
-
 const FavScreen=props=>{
     const FavMeals=MEALS.filter(meal=>meal.id==="m1" || meal.id==="m2");
     return(
