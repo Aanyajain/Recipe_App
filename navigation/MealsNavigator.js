@@ -7,7 +7,7 @@ import MealDetailsScreen from '../screens/MealDetailsScreen';
 import Colors from '../constants/Colors';
 import FiltersScreen from '../screens/FiltersScreen';
 import FavScreen from '../screens/FavScreen';
-import {Platform} from 'react-native';
+import {Platform,Text} from 'react-native';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {Ionicons} from '@expo/vector-icons';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
@@ -16,6 +16,9 @@ import {createDrawerNavigator} from 'react-navigation-drawer';
 const defaultStackNavOptions={
     headerStyle:{
         backgroundColor:Platform.OS==="android"?Colors.primaryColor:"",
+    },
+    headerTitleStyle:{
+        fontFamily:'open-sans-bold'
     },
     headerTintColor:Platform.OS==="android"?'white':Colors.primaryColor,
 };
@@ -39,6 +42,7 @@ const tabScreenConfig={
         tabBarIcon:(tabInfo)=>{
             return <Ionicons name="ios-restaurant" size={25} color={tabInfo.tintColor} />
         },
+        tabBarLabel:Platform.OS==="android"?<Text style={{fontFamily:'open-sans-bold'}}>Meals</Text>:"Meals",
         tabBarColor:Colors.primaryColor
     }
 },
@@ -46,6 +50,7 @@ const tabScreenConfig={
         tabBarIcon:(tabInfo)=>{
             return <Ionicons name="ios-star" size={25} color={tabInfo.tintColor} />
         },
+        tabBarLabel:Platform.OS==="android"?<Text style={{fontFamily:'open-sans-bold'}}>Favorites</Text>:"Favorites",
         tabBarColor:Colors.secondaryColor
     }
 }}
@@ -74,4 +79,4 @@ const MainNavigator=createDrawerNavigator({
     Filters:FiltersNavigator
 });
 
-export default createAppContainer(FavTabNavigator);
+export default createAppContainer(MainNavigator);

@@ -30,8 +30,8 @@ export default function App() {
 
   return (
     
-  //  <MealsNavigator />
-   <FiltersScreen />
+   <MealsNavigator />
+  //  <FiltersScreen />
 
   );
 }
