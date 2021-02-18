@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,Text,Button,Platform,TouchableOpacity,StyleSheet} from 'react-native';
+import {Platform,TouchableOpacity,StyleSheet} from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import {CATEGORIES} from '../data/dummy-data';
 import Colors from '../constants/Colors';
