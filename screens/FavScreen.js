@@ -6,9 +6,9 @@ import {HeaderButtons,Item} from 'react-navigation-header-buttons';
 import {HeaderButton} from '../components/HeaderButton';
 
 const FavScreen=props=>{
-    const FavMeals=useSelector(state=>state.meals.favMeals);
+    const favoriteMeals=useSelector(state=>state.meals.favMeals);
     return(
-        <MealList listData={FavMeals} navigation={props.navigation} />
+        <MealList listData={favoriteMeals} navigation={props.navigation} />
     );
 }
 
