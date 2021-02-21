@@ -16,6 +16,16 @@ const CategoryMealsScreen=props=>{
      meal=>meal.categoryIds.indexOf(catId)>=0
    );
 
+   if(displayedMeals.length===0)
+   {
+     return(
+       <View style={styles.content}>
+         <Text style={{fontFamily:'open-sans-bold',margin:10}}>
+           No meals found,check your filters!
+         </Text>
+       </View>
+     )
+   }
     return(
       <MealList listData={displayedMeals} navigation={props.navigation} />
       );
@@ -29,5 +39,13 @@ CategoryMealsScreen.navigationOptions=navigationData=>{
     headerTitle:selectedCategory.title,
   };
 };
+
+const styles=StyleSheet.create({
+  content:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+  }
+})
 
 export default CategoryMealsScreen;

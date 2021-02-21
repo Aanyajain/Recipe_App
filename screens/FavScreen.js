@@ -7,6 +7,16 @@ import {HeaderButton} from '../components/HeaderButton';
 
 const FavScreen=props=>{
     const favoriteMeals=useSelector(state=>state.meals.favMeals);
+  
+    if(favoriteMeals.length===0 || !favoriteMeals)
+    {
+        return (
+        <View style={styles.content}>
+            <Text style={{fontFamily:'open-sans-bold'}}>No favorite meals found.Start adding some</Text>
+        </View>
+        )
+    }
+
     return(
         <MealList listData={favoriteMeals} navigation={props.navigation} />
     );
@@ -31,7 +41,12 @@ screen:{
     flex:1,
     justifyContent:'center',
     alignItems: 'center'
-}
-})
+},
+content:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center',
+},
+});
 
 export default FavScreen;
